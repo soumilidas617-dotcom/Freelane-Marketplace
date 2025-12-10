@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SkillLink | Freelance Marketplace</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    /* ===== General ===== */
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* ===== Navbar ===== */
+    .navbar {
+      background-color: #004aad;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .navbar-brand {
+      font-weight: 700;
+      font-size: 22px;
+      color: white !important;
+    }
+
+    .navbar-brand img {
+      height: 40px;
+      margin-right: 10px;
+      border-radius: 8px;
+    }
+
+    .nav-link {
+      color: white !important;
+      margin-right: 20px;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    .nav-link:hover, .nav-link.active {
+      color: #ffcb05 !important;
+    }
+
+    /* ===== Hero ===== */
+    .hero {
+      background: linear-gradient(to right, #004aad, #007bff);
+      color: white;
+      text-align: center;
+      padding: 100px 20px;
+    }
+
+    .hero h1 {
+      font-weight: 700;
+      font-size: 2.5rem;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin-top: 15px;
+    }
+
+    .btn-custom {
+      background-color: #ffcb05;
+      color: black;
+      border-radius: 25px;
+      padding: 10px 25px;
+      transition: 0.3s;
+      font-weight: 500;
+      border: none;
+    }
+
+    .btn-custom:hover {
+      background-color: white;
+      color: #004aad;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    /* ===== Cards ===== */
+    .card {
+      border: none;
+      border-radius: 15px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+
+    .card h5 {
+      color: #004aad;
+      font-weight: 600;
+    }
+
+    /* ===== Upload Section ===== */
+    .upload-section {
+      background-color: #ffffff;
+      border-radius: 15px;
+      padding: 40px 30px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    .upload-section h4 {
+      color: #004aad;
+      font-weight: 600;
+    }
+
+    /* ===== Footer ===== */
+    footer {
+      background-color: #004aad;
+      color: white;
+      text-align: center;
+      padding: 20px 0;
+      margin-top: 50px;
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 1.8rem;
+      }
+      .nav-link {
+        margin-right: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="#">
+        <img src="https://i.pinimg.com/736x/71/c0/21/71c021b68dc97dceb3829506e3ed4b4b.jpg" alt="SkillLink Logo">
+        SkillLink
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+     <ul class="navbar-nav ms-auto">
+  <li class="nav-item"><a class="nav-link {% if request.endpoint == 'home' %}active{% endif %}" href="{{ url_for('home') }}">Home</a></li>
+  <li class="nav-item"><a class="nav-link {% if request.endpoint == 'post_job' %}active{% endif %}" href="{{ url_for('post_job') }}">Post Job</a></li>
+  <li class="nav-item"><a class="nav-link {% if request.endpoint == 'jobs' %}active{% endif %}" href="{{ url_for('jobs') }}">Jobs</a></li>
+  <li class="nav-item"><a class="nav-link {% if request.endpoint == 'messages' %}active{% endif %}" href="{{ url_for('messages') }}">Messages</a></li>
+  <li class="nav-item"><a class="nav-link {% if request.endpoint == 'about' %}active{% endif %}" href="{{ url_for('about') }}">About</a></li>
+  <li class="nav-item"><a class="nav-link {% if request.endpoint == 'contact' %}active{% endif %}" href="{{ url_for('contact') }}">Contact</a></li>
+</ul>
+
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <h1>Find Work. Hire Talent. Connect Instantly.</h1>
+      <p>The marketplace where skills meet opportunities.</p>
+      <a href="#" class="btn btn-custom mt-3">Explore Jobs</a>
+    </div>
+  </section>
+
+  <!-- Featured Jobs -->
+  <div class="container my-5">
+    <h2 class="text-center mb-4" style="color:#004aad; font-weight:700;">Featured Jobs</h2>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="card p-4">
+          <img src="https://i.pinimg.com/736x/49/47/05/49470529dc6965931a3e626bd46d8378.jpg" class="img-fluid rounded mb-3" alt="Web Developer Job">
+          <h5>Web Developer Needed</h5>
+          <p>Experienced web developer needed to build an e-commerce site with payment integration.</p>
+          <button class="btn btn-custom">Apply Now</button>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card p-4">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-7IgJjuXz6ZfWVoKx_76couybDn1TpQ9s5w&s" class="img-fluid rounded mb-3" alt="Content Marketing Job">
+          <h5>Content Marketing</h5>
+          <p>Create engaging campaigns to drive user engagement and boost conversions.</p>
+          <button class="btn btn-custom">Apply Now</button>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card p-4">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZY68YJll7tlOz6nB2LrQJNYqmpM8O0sfzRg&s" class="img-fluid rounded mb-3" alt="Graphic Designer Job">
+          <h5>Graphic Designer</h5>
+          <p>Bring creative concepts to life with compelling visuals and brand storytelling.</p>
+          <button class="btn btn-custom">Apply Now</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Upload Section -->
+  <div class="container my-5">
+    <div class="upload-section">
+      <h4>Upload Your Portfolio or Work Samples</h4>
+      <p>Show your talent to employers by uploading sample images or project screenshots.</p>
+      <form action="#" method="POST" enctype="multipart/form-data">
+        <input type="file" class="form-control w-50 mx-auto" name="portfolio_image" accept="image/*" required>
+        <button class="btn btn-custom mt-3">Upload</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 SkillLink | All Rights Reserved</p>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
